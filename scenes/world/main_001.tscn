@@ -8,10 +8,15 @@
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -16.0
+margin_bottom = -16.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 112 )
+
+[node name="CameraFollower" parent="Player" index="3"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Floor" type="Node" parent="."]
 
@@ -56,3 +61,15 @@ position = Vector2( 112, 160 )
 
 [node name="Brick14" parent="Floor" instance=ExtResource( 1 )]
 position = Vector2( 96, 160 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 16, 104 )
+current = true
+smoothing_enabled = true
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain"]
+polygon = PoolVector2Array( -16, 32, -16, 240, 176, 240, 208, 208, 240, 208, 240, 240, 272, 240, 304, 208, 320, 208, 352, 240, 368, 240, 368, 144, 384, 144, 384, 272, -32, 272, -32, 32 )
+
+[editable path="Player"]
